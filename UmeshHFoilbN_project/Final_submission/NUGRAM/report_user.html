@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Report User</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+    
+        .container {
+            width: 90%;
+            max-width: 600px;
+            margin: 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    
+        #reportForm,
+        #oldreportsButton,
+        #dashboardButton {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    
+        #reportForm button,
+        #oldreportsButton,
+        #dashboardButton {
+            margin-top: 10px;
+            width: calc(100% - 506px); /* Adjust for padding */
+        }
+    
+        input[type="text"],
+        select,
+        textarea {
+            width: 60%; /* Adjusted width */
+            margin: 0 auto; /* Centered */
+            display: block; /* To apply margin auto correctly */
+            margin-bottom: 10px;
+        }
+    
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    
+        button:hover {
+            background-color: #0056b3;
+        }
+    
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+    </style>
+    
+</head>
+<body>
+    <h2>Report a User</h2>
+
+    <!-- Redirect to Previous reports -->
+    <button id="oldreportsButton">Previous Reports</button>
+
+    <form id="reportForm">
+        <label for="reportedId"> NUID to Report:</label><br>
+        <input type="text" id="reportedId" name="reported_id" required><br>
+
+        <label for="reportCategory">Report Category:</label><br>
+        <select id="reportCategory" name="report_category" required>
+            <option value="spam">Spam</option>
+            <option value="abuse">Abuse</option>
+            <option value="other">Other</option>
+        </select><br>
+
+        <label for="reportDescription">Description:</label><br>
+        <textarea id="reportDescription" name="report_description"></textarea><br>
+
+        <button type="submit">Submit Report</button>
+    </form>
+
+    <!-- Redirect to Dashboard Button -->
+    <button id="dashboardButton">Go to Dashboard</button>
+    <script src="report_user.js"></script>
+</body>
+</html>

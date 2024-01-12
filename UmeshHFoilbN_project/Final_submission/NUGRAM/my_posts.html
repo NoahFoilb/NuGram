@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Posts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        #dashboardButton {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #postsContainer {
+            width: 60%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .post {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .post img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .post h3 {
+            color: #333;
+        }
+
+        .post button {
+            padding: 8px 15px;
+            margin-right: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .post button:hover {
+            background-color: #0056b3;
+        }
+
+        .comments {
+            margin-top: 15px;
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .comments p {
+            margin: 5px 0;
+            line-height: 1.5;
+        }
+
+        #comment-input {
+            width: calc(100% - 110px);
+            padding: 8px;
+            margin-right: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .comments button {
+            padding: 8px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .comments button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h1>My Posts</h1>
+    <div id="postsContainer">
+        <!-- User posts will be displayed here -->
+    </div>
+
+    <button id="dashboardButton">Go to Dashboard</button>
+
+
+    <script src="my_posts.js"></script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create User</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            margin: auto;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+        }
+
+        label {
+            font-size: 14px;
+            color: #333;
+            display: block;
+            margin-top: 10px;
+            text-align: left;
+        }
+
+        input[type=text], input[type=email], input[type=tel], input[type=file], input[type=password] {
+            width: calc(100% - 22px); /* Adjusted for padding and border */
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 10px; /* Added margin at the bottom */
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=submit], button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            margin-top: 10px; /* Adjusted margin */
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        input[type=submit]:hover, button:hover {
+            background-color: #45a049;
+        }
+
+        button {
+            background-color: #008CBA;
+            margin-bottom: 20px; /* Added bottom margin */
+        }
+
+        button:hover {
+            background-color: #007BAA;
+        }
+
+    </style>
+</head>
+<body>
+
+<h2>Create New User</h2>
+<form id="createUserForm">
+    <label for="NUID">NUID:</label><br>
+    <input type="text" id="NUID" name="NUID" required><br>
+
+    <label for="firstName">First Name:</label><br>
+    <input type="text" id="firstName" name="first_name" required><br>
+
+    <label for="lastName">Last Name:</label><br>
+    <input type="text" id="lastName" name="last_name" required><br>
+
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email" required><br>
+
+    <label for="phoneNumber">Phone Number:</label><br>
+    <input type="tel" id="phoneNumber" name="phone_number"><br>
+
+    <label for="profilePicture">Profile Picture:</label><br>
+    <input type="file" id="profilePicture" name="profile_picture" accept="image/*"><br>
+
+    <label for="degree">Degree:</label><br>
+    <input type="text" id="degree" name="degree"><br>
+
+    <label for="major">Major:</label><br>
+    <input type="text" id="major" name="major"><br>
+
+    <label for="college">College:</label><br>
+    <input type="text" id="college" name="college"><br>
+
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password"><br>
+
+    <input type="submit" value="Create User">
+</form>
+
+<!-- Redirect to Dashboard Button -->
+<button id="loginButton">Login</button>
+<script>
+document.getElementById('createUserForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+
+
+
+    // Read the file from the file input
+    var file = document.getElementById('profilePicture').files[0];
+    var reader = new FileReader();
+
+    reader.onloadend = function() {
+        // This is the base64 string
+        var base64String = reader.result;
+
+        // Remove the prefix from the base64 string (if necessary)
+        base64String = base64String.replace(/^data:image\/[a-z]+;base64,/, "");
+
+        var userData = {
+            NUID: document.getElementById('NUID').value,
+            first_name: document.getElementById('firstName').value,
+            last_name: document.getElementById('lastName').value,
+            email: document.getElementById('email').value,
+            phone_number: document.getElementById('phoneNumber').value,
+            profile_picture: base64String,
+            degree: document.getElementById('degree').value,
+            major: document.getElementById('major').value,
+            college: document.getElementById('college').value,
+            password: document.getElementById('password').value
+
+        };
+
+        fetch('http://127.0.0.1:5000/users', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(userData)
+        })
+        .then(response => {
+        if (response.ok) {
+            return response.json();
+        } else {
+            throw new Error('Failed to create user');
+        }
+        })
+        .then(data => {
+            alert('User created successfully! ');
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            alert('Failed to create user.');
+        });
+    };
+
+    // Start reading the file as a Data URL (base64)
+    if (file) {
+        reader.readAsDataURL(file);
+    } else {
+        // Handle the case where no file was selected
+        alert('Please select a profile picture.');
+    }
+});
+
+document.getElementById('loginButton').addEventListener('click', function() {
+    window.location.href = 'login.html';
+});
+
+
+ 
+</script>
+
+</body>
+</html>
+

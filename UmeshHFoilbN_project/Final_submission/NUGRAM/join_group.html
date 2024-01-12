@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Join a Group</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h2, h3 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        #groupsList div {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            background-color: white;
+            max-width: 300px;
+            display: inline-block;
+            margin: 10px;
+            vertical-align: top;
+        }
+
+        #groupsList img {
+            max-width: 100px;
+            max-height: 100px;
+            border-radius: 50%;
+            margin-top: 10px;
+        }
+
+        #joinGroupForm {
+            margin-top: 20px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            width: 200px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h2>Join a Group</h2>
+
+    <div id="groupsList"></div>
+
+    <h3>Join a Group</h3>
+    <form id="joinGroupForm">
+        <input type="text" id="groupName" placeholder="Enter group name" required>
+        <button type="submit">Join Group</button>
+    </form>
+
+    <!-- Redirect to Dashboard Button -->
+    <button id="dashboardButton">Go to Dashboard</button>
+    
+    <script src="join_group.js"></script>
+</body>
+</html>

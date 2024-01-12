@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Dashboard</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            background-image: url('krentzman.jpeg'); /* Add your background image URL here */
+            background-size: cover;
+        }
+
+        h2 {
+            color: #444;
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 30px;
+        }
+
+        .dashboard-menu {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .dashboard-menu li {
+            margin: 15px 0;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            font-size: 1em;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px); /* Button lift effect */
+        }
+
+        /* Responsive design */
+        @media (max-width: 600px) {
+            .dashboard-menu {
+                flex-direction: column;
+            }
+        }
+    </style>
+
+
+</head>
+<body>
+    <h2>Welcome to Your Dashboard</h2>
+
+    <!-- Dashboard Menu -->
+    <ul class="dashboard-menu">
+        <li><button onclick="location.href='new_post.html'">Add Post</button></li>
+        <li><button onclick="location.href='my_posts.html'">My Posts</button></li>
+        <li><button onclick="location.href='message.html'">Message</button></li>
+        <li><button onclick="location.href='follow.html'">Search/Follow Users</button></li>
+        <li><button onclick="location.href='report_user.html'">Report User</button></li>
+        <li><button onclick="location.href='join_group.html'">Join Group</button></li>
+        <li><button onclick="location.href='creategroup.html'">Create new Group</button></li>
+        <li><button onclick="location.href='updates.html'">Update Profile</button></li>
+        <li><button onclick="location.href='followed_posts.html'">View Followers' Posts</button></li>
+    </ul>
+
+    <script>
+        // Add any JavaScript needed for the dashboard here
+    </script>
+</body>
+</html>

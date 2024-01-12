@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Report List</title>
+    <style>
+        /* Basic reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        /* Styling the table */
+        table {
+            width: 100%;
+            margin-bottom: 20px;
+            border-collapse: collapse;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+        thead {
+            background-color: #394263;
+            color: #fff;
+        }
+        tbody tr:nth-child(odd) {
+            background-color: #f2f2f2;
+        }
+        /* Button styling */
+        button {
+            display: block;
+            width: 200px;
+            padding: 10px;
+            margin: 20px auto;
+            border: none;
+            background-color: #5c6bc0;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        button:hover {
+            background-color: #394263;
+        }
+    </style>
+</head>
+<body>
+    <h2>Report List</h2>
+    <table id="reportsTable">
+        <thead>
+            <tr>
+                <th>Report ID</th>
+                <th>Reporter ID</th>
+                <th>Reported ID</th>
+                <th>Category</th>
+                <th>Description</th>
+                <th>Report Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Reports will be loaded here -->
+        </tbody>
+    </table>
+
+    <!-- Redirect to Dashboard Button -->
+    <button id="reportButton">Back to Reports</button>
+
+    <script>
+        document.getElementById('reportButton').addEventListener('click', function() {
+        window.location.href = 'report_user.html';
+
+        });
+
+        const nuId = localStorage.getItem('NUID');
+        
+        fetch(`http://127.0.0.1:5000/get_reports/${nuId}`)
+            .then(response => response.json())
+            .then(reports => {
+                const tableBody = document.getElementById('reportsTable').getElementsByTagName('tbody')[0];
+                reports.forEach(report => {
+                    let row = tableBody.insertRow();
+                    let reportId = row.insertCell(0);
+                    let reporterId = row.insertCell(1);
+                    let reportedId = row.insertCell(2);
+                    let category = row.insertCell(3);
+                    let description = row.insertCell(4);
+                    let reportTime = row.insertCell(5);
+
+                    reportId.innerHTML = report.report_id;
+                    reporterId.innerHTML = report.reporter_id;
+                    reportedId.innerHTML = report.reported_id;
+                    category.innerHTML = report.report_category;
+                    description.innerHTML = report.report_description || 'N/A';
+                    reportTime.innerHTML = new Date(report.report_time).toLocaleString();
+                });
+            })
+            .catch(error => console.error('Error:', error));
+    </script>
+</body>
+</html>

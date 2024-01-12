@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Image</title>
+</head>
+<body>
+    <h2>View Image</h2>
+    <img id="image" src="" alt="Image will be displayed here">
+    
+    <script>
+        fetch('http://127.0.0.1:5000/get_image/2') // Replace '1' with the actual image ID
+        .then(response => response.json())
+        .then(data => {
+            if (data.image_data) {
+                document.getElementById('image').src = 'data:image/jpeg;base64,' + data.image_data;
+            } else {
+                console.error('Image not found');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    </script>
+</body>
+</html>

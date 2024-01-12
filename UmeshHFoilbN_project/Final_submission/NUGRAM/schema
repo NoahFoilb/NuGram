@@ -1,0 +1,163 @@
+DROP DATABASE IF EXISTS NUGRAM;
+CREATE DATABASE NUGRAM;
+ 
+USE NUGRAM;
+ 
+CREATE TABLE Users (
+    
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    NUID INT UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    first_name VARCHAR(255) NOT NULL,
+    last_name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    phone_number VARCHAR(20),
+    profile_picture LONGTEXT,
+    degree VARCHAR(255) NOT NULL,
+    major VARCHAR(255) NOT NULL, 
+    college VARCHAR(255) NOT NULL
+);  
+
+CREATE TABLE Posts (
+    post_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    caption TEXT,														
+    post LONGTEXT,   
+    timestamp DATETIME NOT NULL,
+    CONSTRAINT fk_post_ID FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE Comments (
+    comment_id INT AUTO_INCREMENT PRIMARY KEY,  
+    post_id INT NOT NULL,
+    user_id INT NOT NULL,
+    comment TEXT NOT NULL,
+    comment_date DATETIME NOT NULL,
+    CONSTRAINT fk_comment_post_id FOREIGN KEY (post_id) REFERENCES Posts(post_id) ON DELETE CASCADE ON UPDATE CASCADE,	
+    CONSTRAINT fk_comment_ID FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+ 
+
+CREATE TABLE Likes (
+    user_id INT NOT NULL,
+    post_id INT NOT NULL,
+    like_date DATETIME NOT NULL,
+    PRIMARY KEY (user_id, post_id),
+    CONSTRAINT fk_like_ID FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_like_post_id FOREIGN KEY (post_id) REFERENCES Posts(post_id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+ 
+
+CREATE TABLE Messages (
+    message_id INT AUTO_INCREMENT PRIMARY KEY,
+    sender_id INT NOT NULL,
+    receiver_id INT NOT NULL,
+    message_body TEXT,
+    read_receipt BOOLEAN,
+    message_date DATETIME NOT NULL,
+    CONSTRAINT fk_message_sender_id FOREIGN KEY (sender_id) REFERENCES Users(user_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_message_receiver_id FOREIGN KEY (receiver_id) REFERENCES Users(user_id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+ 
+
+CREATE TABLE Follows (
+    follower_id INT NOT NULL,
+    followed_id INT NOT NULL,
+    follow_date DATETIME NOT NULL,
+    PRIMARY KEY (follower_id, followed_id),
+    CONSTRAINT fk_follows_follower_id FOREIGN KEY (follower_id) REFERENCES Users(user_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_follows_followed_id FOREIGN KEY (followed_id) REFERENCES Users(user_id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+ 
+
+
+CREATE TABLE Reports (
+    report_id INT AUTO_INCREMENT PRIMARY KEY,
+    reporter_id INT NOT NULL,
+    reported_id INT NOT NULL,
+    report_category VARCHAR(255) NOT NULL,   # will have other as an option
+    report_description TEXT,					# can submit an empty report
+    report_time DATETIME NOT NULL,
+    CONSTRAINT fk_report_reporter FOREIGN KEY (reporter_id) REFERENCES Users(NUID) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_report_reported FOREIGN KEY (reported_id) REFERENCES Users(NUID) ON DELETE CASCADE ON UPDATE CASCADE
+);
+ 
+
+CREATE TABLE `Groups` (
+    group_name VARCHAR(255) PRIMARY KEY,
+    description TEXT,
+    date_created DATETIME NOT NULL,
+    group_image LONGTEXT NOT NULL
+);
+
+CREATE TABLE User_Groups (
+    NUID INT NOT NULL,
+    group_name VARCHAR(255) NOT NULL,
+    PRIMARY KEY (NUID, group_name),
+    CONSTRAINT fk_user_group_NUID FOREIGN KEY (NUID) REFERENCES Users(NUID) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_user_group_group_name FOREIGN KEY (group_name) REFERENCES `Groups`(group_name) ON DELETE CASCADE ON UPDATE CASCADE
+);
+ 
+
+INSERT INTO Users (NUID, first_name, last_name, email, phone_number, profile_picture, degree, major, college, password) VALUES
+(0000, 'Password0', 'AdminAccount', 'AdminAccount', 'email0@northeastern.edu', 1234567891, NULL ,'Masters','Computer Science',  'Khoury'),
+(0001, 'Password1', 'Firstname1', 'Lastname1', 'email1@northeastern.edu', 1234567891, NULL ,'Masters','Computer Science',  'Khoury'),
+(0002, 'Password2', 'Firstname2', 'Lastname2', 'email2@northeastern.edu', 2345678911, NULL ,'Undergraduate','Computer Science', 'Khoury'),
+(0003, 'Password3', 'Firstname3', 'Lastname3', 'email3@northeastern.edu', 3456789112, NULL ,'Masters','Computer Science', 'Khoury'),
+(0004, 'Password4', 'Firstname4', 'Lastname4', 'email4@northeastern.edu', 4567891123, NULL ,'Undergraduate','Computer Science', 'Khoury'),
+(0005, 'Password5', 'Firstname5', 'Lastname5', 'email5@northeastern.edu', 5678911234, NULL ,'Masters','Computer Science', 'Khoury');
+
+
+insert into User_Groups values
+(0001, 'Chess Team'),
+(0002, 'Winter Projects'),
+(0005, 'Chess Team'),
+(0004, 'Winter Projects');
+ 
+ 
+ INSERT INTO `Groups` VALUES
+('Chess club', 'This is northeastern chess team, come to room 334 at the Richard hall M-F 3-5 to join!', '2019-12-01'),
+('Climbing group', 'You can find us at fenways CRG anytime after 5pm, walk ins welcome!', '2022-12-02'),
+('Basketball team', 'Connect with people who are also looking to hoop!', '2022-12-06');
+('Boxing club', 'Want to learn boxing and get displined! Head on over to the marino martial arts center', '2022-12-06');
+('Dance group', 'Want to learn how to dance? Come join us for a trial class', '2022-12-06');
+('Baseball team', 'Baseball team convenes every monday and wednesday, 5pm at the cabot cage!', '2022-12-06');
+
+
+ 
+ 
+Insert into Posts Values
+(1, 0001,'Just got admitted into Northeastern', NULL, '2023-08-01'),
+(2, 0001,'First day of classes :)', NULL, '2023-9-7'),
+(3, 0001,'This is my favorte building so far', NULL, '2023-9-10'),
+(4, 0002,'I love the research potential here at northeastern university. I am starting research on protein development program if anyone wants a project this winter!', NULL, '2023-11-8'),
+(5, 0003,'The food on campus is AMAZING', NULL, '2023-9-25');
+
+insert into Messages values 
+(1, 0001, 0005, 'Hey, I saw you commented on my post, how are you?', TRUE,'2023-8-01 13:30:00'),
+(2, 0005, 0001, 'Im good, want to get popeyes tommorow around noon?', TRUE,'2023-8-01 13:35:00'),
+(3, 0001, 0005, 'Yes, lets do it. See you at popeyes.', TRUE,'2023-8-01 13:40:00'),
+(4, 0004, 0002, 'Hey, I would love to hear about your research opportunity', FALSE,'2023-11-8'),
+(5, 0003, 0001, 'Youre cute lets date!', False, '2023-9-7');
+ 
+insert into Follows values 
+(0005, 0001,'2023-8-1'),
+(0001, 0005,'2023-8-1'),
+(0003, 0001, '2023-8-1'),
+(0002, 0004, '2023-11-8'),
+(0004, 0002,'2023-11-8');
+
+insert into Reports values
+(1,0003,'Sexual Harassment', 'He asked me on a date because im cute, completely unprofessional');
+ 
+insert into Likes Values 
+(0005, 1,'2023-8-1'),
+(0005, 2,'2023-9-7'),
+(0005, 3,'2023-9-10'),
+(0004, 4,'2023-11-8');
+ 
+Insert into Comments Values
+(1, 1,0005, 'Me too, maybe we can meet up before and get lunch as we are the same Major','2023-8-1'),
+(2, 2,0005, 'Good luck with DBMS, im off to PDP right now!','2023-9-7'),
+(3, 4,0004, 'I would love to chat about this, I have a few projects similar to this!','2023-11-8');
+ 

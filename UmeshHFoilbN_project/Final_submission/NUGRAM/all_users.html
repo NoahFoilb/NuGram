@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Users</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        .user-div {
+            background: white;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #ddd; /* Add a border line at the bottom */
+        }
+
+        .user-div:last-child {
+            border-bottom: none; /* Remove border from the last element */
+        }
+
+        .user-name {
+            font-weight: bold; /* Make the user name bold */
+        }
+
+        input[type="text"] {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            margin: 10px 5px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #searchResults, #usersContainer {
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .user-div {
+            background: white;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .user-div img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .user-info {
+            flex-grow: 1;
+        }
+    </style>
+</head>
+<body>
+    <h1>All Users</h1>
+
+    <input type="text" id="searchInput" placeholder="Search Users">
+    <button id="searchButton">Search</button>
+    <button id="dashboardButton"> Back to Dashboard</button>
+
+    <h2>Users:</h2>
+    <div id="searchResults"></div> <!-- Container for search results -->
+
+    
+    <div id="usersContainer"></div> <!-- Container for all users -->
+
+    <script src="all_users.js"></script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Followed Users' Posts</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            text-align: center;
+            color: #4E5760;
+            margin-bottom: 2rem;
+        }
+        .post {
+            background: #FFFFFF;
+            border: 1px solid #DDDFE2;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .post h3 {
+            color: #365899;
+            font-size: 24px;
+        }
+        .post img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+        .post p {
+            color: #4E5760;
+            margin-top: 10px;
+        }
+        .comments {
+            border-top: 1px solid #DDDFE2;
+            padding-top: 10px;
+            margin-top: 10px;
+            display: none; /* Hide by default */
+        }
+        .comment-input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            margin-top: 10px;
+        }
+        button {
+            background-color: #4267B2;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin-top: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.2s;
+        }
+        button:hover {
+            background-color: #365899;
+        }
+        #dashboardButton {
+            background-color: #1C1E21;
+        }
+        #dashboardButton:hover {
+            background-color: #151719;
+        }
+    </style>
+</head>
+<body>
+    <h1>Posts from Users You Follow</h1>
+    <div id="postsContainer">
+        <!-- Posts will be displayed here -->
+    </div>
+
+    <button id="dashboardButton">Go to Dashboard</button>
+  
+
+    <script src="followed_posts.js"></script>
+</body>
+</html>

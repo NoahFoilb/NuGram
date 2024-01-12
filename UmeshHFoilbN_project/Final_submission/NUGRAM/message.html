@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Search and Messaging</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h2, h3 {
+            color: #333;
+        }
+
+        input[type="text"], textarea {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 30%;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #searchResults, #messageList {
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        #searchResults div, #messageList div {
+            background: white;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #messageInput {
+            width: 90%;
+            height: 100px;
+        }
+
+        #messagingSection {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Welcome to the User Search and Messaging Page</h2>
+
+    <!-- User Search Section -->
+    <div>
+        <input type="text" id="searchInput" placeholder="Search users...">
+        <button id="searchButton">Search</button>
+        <div id="searchResults"></div>
+    </div>
+    
+
+    <!-- Messaging Section -->
+    <div id="messagingSection" style="display: none;">
+        <h3>Messages</h3>
+        <div id="messageList"></div>
+        <textarea id="messageInput"></textarea>
+        <button id="sendMessageButton">Send Message</button>
+    </div>
+
+     <!-- Redirect to Dashboard Button -->
+     <button id="dashboardButton">Go to Dashboard</button>
+
+    <script src="message.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Updates</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e9eff1;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 40px;
+        }
+        /* Button Styles */
+        button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #45a049; /* Darker green */
+        }
+        /* Dashboard button specific style */
+        #dashboardButton {
+            background-color: #008CBA; /* Blue */
+        }
+        #dashboardButton:hover {
+            background-color: #007BAA; /* Darker blue */
+        }
+    </style>
+</head>
+<body>
+    <h1>User Profile Updates</h1>
+
+    <button onclick="promptUpdate('password')">Update Password</button>
+    <button onclick="promptUpdate('phone_number')">Update Phone Number</button>
+    <button onclick="promptUpdate('profile_picture')">Update Profile Picture</button>
+    <button onclick="promptUpdate('degree')">Update Degree</button>
+    <button onclick="promptUpdate('major')">Update Major</button>
+    <button onclick="promptUpdate('college')">Update College</button>
+
+    <button id="dashboardButton">Go to Dashboard</button>
+
+    <script src="updates.js"></script>
+</body>
+</html>

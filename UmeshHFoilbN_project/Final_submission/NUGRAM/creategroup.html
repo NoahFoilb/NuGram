@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create New Group</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h2 {
+            color: #333;
+            margin: 20px 0;
+        }
+
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px; /* Add space below the form for the dashboard button */
+            width: 300px; /* Set a fixed width for the form */
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            color: #333;
+            text-align: left;
+        }
+
+        input[type="text"],
+        input[type="file"],
+        textarea,
+        button {
+            width: calc(100% - 12px); /* Adjust width considering padding */
+            padding: 6px;
+            margin-top: 5px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            display: block; /* Make input take the full width */
+        }
+
+        textarea {
+            resize: vertical;
+            height: 100px;
+            margin-bottom: 10px; /* Add space below textarea */
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #052446;
+        }
+
+        #dashboardButton {
+            background-color: rgb(117, 160, 116);
+            color: black;
+            width: calc(100% - 1112px); /* Adjust width considering padding */
+            margin-top: 10px; /* Add space above the dashboard button */
+        }
+    </style>
+</head>
+<body>
+    <h2>Create New Group</h2>
+    <form id="createGroupForm">
+        <label for="groupName">Group Name:</label><br>
+        <input type="text" id="groupName" name="group_name" required><br>
+
+        <label for="description">Description:</label><br>
+        <textarea id="description" name="description" required></textarea><br>
+
+        <label for="groupImage">Group Image:</label><br>
+        <input type="file" id="groupImage" name="group_image" accept="image/*" required><br>
+
+        <button type="submit">Create Group</button>
+    </form>
+
+    <!-- Redirect to Dashboard Button -->
+    <button id="dashboardButton">Go to Dashboard</button>
+
+    <script src="creategroup.js"></script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            margin: 10px 5px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #searchResults, #followersList, #followingList {
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .user-div {
+            background: white;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .user-div img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .user-info {
+            flex-grow: 1;
+        }
+    </style>
+</head>
+<body>
+    <h2>Page to Search and Follow Users</h2>
+
+    <!-- User Search -->
+    <input type="text" id="searchInput" placeholder="Search users...">
+    <button id="searchButton">Search</button>
+    <div id="searchResults"></div>
+
+    <!-- List of Followers -->
+    <button id="followersButton">Followers</button>
+    <div id="followersList"></div>
+
+    <!-- List of Following -->
+    <button id="followingButton">Following</button>
+    <div id="followingList"></div>
+
+    <!-- view all users-->
+    <li><button onclick="location.href='all_users.html'">View all Users</button></li>
+
+
+    <!-- Redirect to Dashboard Button -->
+    <button id="dashboardButton">Go to Dashboard</button>
+
+    <script src="follow.js"></script>
+</body>
+</html>
